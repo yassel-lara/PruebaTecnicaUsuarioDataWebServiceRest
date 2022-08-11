@@ -6,17 +6,11 @@
 package root.dto.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 
 
@@ -24,23 +18,23 @@ import javax.persistence.Table;
  *
  * @author User
  */
-@Entity
-@Table(name = "users")
+
 public class UserDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue
-    @Column(name = "id")
+
     private UUID id;
-    @Column(name = "name")
     private String name;   
-    @Column(name = "email")
     private String email;      
-    @Column(name = "password")
     private String password; 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<UserPhoneDTO> userPhoneList;    
+    
+
+    private Date create;
+    private Date modified;    
+    private Date last_login;      
+    private Date token;     
+    private Boolean isactive;     
     
     
     public UserDTO() {
@@ -90,11 +84,56 @@ public class UserDTO implements Serializable {
 		this.userPhoneList = userPhoneList;
 	}
 
+	public Date getCreate() {
+		return create;
+	}
+
+	public void setCreate(Date create) {
+		this.create = create;
+	}
+
+	public Date getModified() {
+		return modified;
+	}
+
+	public void setModified(Date modified) {
+		this.modified = modified;
+	}
+
+	public Date getLast_login() {
+		return last_login;
+	}
+
+	public void setLast_login(Date last_login) {
+		this.last_login = last_login;
+	}
+
+	public Date getToken() {
+		return token;
+	}
+
+	public void setToken(Date token) {
+		this.token = token;
+	}
+
+	public Boolean getIsactive() {
+		return isactive;
+	}
+
+	public void setIsactive(Boolean isactive) {
+		this.isactive = isactive;
+	}
+
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", userPhoneList="
-				+ userPhoneList + "]";
+		return "UserDTO [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password
+				+ ", userPhoneList=" + userPhoneList + ", create=" + create + ", modified=" + modified + ", last_login="
+				+ last_login + ", token=" + token + ", isactive=" + isactive + "]";
 	}
+
+
+    
 	
+
 
 }

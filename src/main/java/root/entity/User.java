@@ -53,7 +53,11 @@ public class User implements Serializable {
     @Column(name = "last_login")
     private Date last_login;      
     
+    @Column(name = "token")
+    private String token;     
     
+    @Column(name = "isactive")
+    private Boolean isactive;         
     
     
     public User() {
@@ -102,12 +106,58 @@ public class User implements Serializable {
 	public void setUserPhoneList(List<UserPhone> userPhoneList) {
 		this.userPhoneList = userPhoneList;
 	}
+	
+	
+	
+
+	public Date getCreate() {
+		return create;
+	}
+
+	public void setCreate(Date create) {
+		this.create = create;
+	}
+
+	public Date getModified() {
+		return modified;
+	}
+
+	public void setModified(Date modified) {
+		this.modified = modified;
+	}
+
+	public Date getLast_login() {
+		return last_login;
+	}
+
+	public void setLast_login(Date last_login) {
+		this.last_login = last_login;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	public Boolean getIsactive() {
+		return isactive;
+	}
+
+	public void setIsactive(Boolean isactive) {
+		this.isactive = isactive;
+	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", userPhoneList="
-				+ userPhoneList + "]";
+				+ userPhoneList + ", create=" + create + ", modified=" + modified + ", last_login=" + last_login
+				+ ", token=" + token + ", isactive=" + isactive + "]";
 	}
+
+    
 	
 
 }

@@ -1,22 +1,17 @@
 package root.serviceimpl.entity;
 
-import java.math.BigDecimal;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import raiz.dto.entidad.administracion.AdministracionUsuarioLoginDTO;
-import raiz.entidad.administracion.AdministracionUsuarioLogin;
-import raiz.repositorio.entidad.administracion.IAdministracionUsuarioLoginRepositorio;
-import raiz.repositorioextendido.entidad.administracion.AdministracionUsuarioLoginRepositorioExtendido;
-import raiz.servicio.entidad.administracion.IAdministracionUsuarioLoginServicio;
-import raiz.util.entidad.administracion.AdministracionUsuarioLoginUtil;
 import root.dto.entity.UserDTO;
+import root.entity.User;
 import root.repository.entity.IUserRepository;
 import root.service.entity.IUserService;
+import root.util.dto.entity.UserDTOUtil;
+import root.util.entity.UserUtil;
 
 @Service
 @Qualifier("user_service_impl_qualifier")
@@ -30,26 +25,22 @@ public class UserServiceImpl implements IUserService {
 	@Transactional
 	public UserDTO saveDTO(
 			UserDTO userDTO) {
-		
-		
-		   
-		
-		   if(administracionUsuarioLoginDTO == null) {
+
+		   if(userDTO == null) {
 			   return null;
 		   }
 		   
-		   AdministracionUsuarioLogin administracionUsuarioLoginAGuardar = AdministracionUsuarioLoginUtil.convertirAdministracionUsuarioLoginDTOAAdministracionUsuarioLogin(administracionUsuarioLoginDTO);
-		   AdministracionUsuarioLogin administracionUsuarioLoginGuardado = iAdministracionUsuarioLoginRepositorio.save(administracionUsuarioLoginAGuardar);
+		   User userToSave = UserUtil.valueOf(userDTO);
+		   User userSaved = iUserRepository.save(userToSave);
 		   
-		   if(administracionUsuarioLoginGuardado == null) {
+		   if(userSaved == null) {
 			   
 			   return null;
 		   }
-		   
-		   AdministracionUsuarioLoginDTO administracionUsuarioLoginDTOADevolver = AdministracionUsuarioLoginUtil.convertirAdministracionUsuarioLoginAAdministracionUsuarioLoginDTO(administracionUsuarioLoginGuardado);
-		   System.out.println("Guardado: "+administracionUsuarioLoginGuardado);
 
-		return administracionUsuarioLoginDTOADevolver;
+		   UserDTO userDTOToReturn = UserDTOUtil.valueOf(userSaved);
+
+		return userDTOToReturn;
 	}
 
 	
