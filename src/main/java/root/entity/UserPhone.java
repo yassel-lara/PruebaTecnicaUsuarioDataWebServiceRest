@@ -18,13 +18,20 @@ public class UserPhone {
     @GeneratedValue
     private UUID id;
     
-    @Column(name = "phone", nullable = false)
-    private String phone;
+    @Column(name = "number")
+    private String number;
+    @Column(name = "citycode")
+    private String citycode;    
+    @Column(name = "contrycode")
+    private String contrycode;   
+   
+    
     
     @ManyToOne
-    @JoinColumn(name = "user", nullable = false, updatable = false)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
     
+ 
     
     public UserPhone() {
     }    
@@ -33,12 +40,36 @@ public class UserPhone {
         this.id = id;
     }
 
-	public String getPhone() {
-		return phone;
+	public UUID getId() {
+		return id;
 	}
 
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setId(UUID id) {
+		this.id = id;
+	}
+
+	public String getNumber() {
+		return number;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
+	}
+
+	public String getCitycode() {
+		return citycode;
+	}
+
+	public void setCitycode(String citycode) {
+		this.citycode = citycode;
+	}
+
+	public String getContrycode() {
+		return contrycode;
+	}
+
+	public void setContrycode(String contrycode) {
+		this.contrycode = contrycode;
 	}
 
 	public User getUser() {
@@ -51,10 +82,10 @@ public class UserPhone {
 
 	@Override
 	public String toString() {
-		return "UserPhone [id=" + id + ", phone=" + phone + ", user=" + user + "]";
+		return "UserPhone [id=" + id + ", number=" + number + ", citycode=" + citycode + ", contrycode=" + contrycode
+				+ ", user=" + user + "]";
 	}
-    
 
-	
+
 
 }

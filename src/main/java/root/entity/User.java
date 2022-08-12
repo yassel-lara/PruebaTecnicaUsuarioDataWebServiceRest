@@ -19,6 +19,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Type;
+
 
 
 /**
@@ -33,6 +35,7 @@ public class User implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "id")
+    @Type(type = "uuid-char")
     private UUID id;
     @Column(name = "name")
     private String name;   
@@ -41,7 +44,7 @@ public class User implements Serializable {
     @Column(name = "password")
     private String password; 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<UserPhone> userPhoneList;    
+    private List<UserPhone> phones;    
     
     
     @Column(name = "create")
@@ -51,7 +54,7 @@ public class User implements Serializable {
     private Date modified;    
     
     @Column(name = "last_login")
-    private Date last_login;      
+    private Date lastLogin;      
     
     @Column(name = "token")
     private String token;     
@@ -99,16 +102,13 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public List<UserPhone> getUserPhoneList() {
-		return userPhoneList;
+	public List<UserPhone> getPhones() {
+		return phones;
 	}
 
-	public void setUserPhoneList(List<UserPhone> userPhoneList) {
-		this.userPhoneList = userPhoneList;
+	public void setPhones(List<UserPhone> phones) {
+		this.phones = phones;
 	}
-	
-	
-	
 
 	public Date getCreate() {
 		return create;
@@ -126,12 +126,12 @@ public class User implements Serializable {
 		this.modified = modified;
 	}
 
-	public Date getLast_login() {
-		return last_login;
+	public Date getLastLogin() {
+		return lastLogin;
 	}
 
-	public void setLast_login(Date last_login) {
-		this.last_login = last_login;
+	public void setLastLogin(Date last_login) {
+		this.lastLogin = last_login;
 	}
 
 	public String getToken() {
@@ -152,8 +152,8 @@ public class User implements Serializable {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", userPhoneList="
-				+ userPhoneList + ", create=" + create + ", modified=" + modified + ", last_login=" + last_login
+		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", phones="
+				+ phones + ", create=" + create + ", modified=" + modified + ", last_login=" + lastLogin
 				+ ", token=" + token + ", isactive=" + isactive + "]";
 	}
 

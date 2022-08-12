@@ -27,13 +27,13 @@ public class UserDTO implements Serializable {
     private String name;   
     private String email;      
     private String password; 
-    private List<UserPhoneDTO> userPhoneList;    
+    private List<UserPhoneDTO> phones;    
     
 
     private Date create;
     private Date modified;    
-    private Date last_login;      
-    private Date token;     
+    private Date lastLogin;      
+    private String token;     
     private Boolean isactive;     
     
     
@@ -76,12 +76,12 @@ public class UserDTO implements Serializable {
 		this.password = password;
 	}
 
-	public List<UserPhoneDTO> getUserPhoneList() {
-		return userPhoneList;
+	public List<UserPhoneDTO> getPhones() {
+		return phones;
 	}
 
-	public void setUserPhoneList(List<UserPhoneDTO> userPhoneList) {
-		this.userPhoneList = userPhoneList;
+	public void setPhones(List<UserPhoneDTO> phones) {
+		this.phones = phones;
 	}
 
 	public Date getCreate() {
@@ -100,19 +100,19 @@ public class UserDTO implements Serializable {
 		this.modified = modified;
 	}
 
-	public Date getLast_login() {
-		return last_login;
+	public Date getLastLogin() {
+		return lastLogin;
 	}
 
-	public void setLast_login(Date last_login) {
-		this.last_login = last_login;
+	public void setLastLogin(Date lastLogin) {
+		this.lastLogin = lastLogin;
 	}
 
-	public Date getToken() {
+	public String getToken() {
 		return token;
 	}
 
-	public void setToken(Date token) {
+	public void setToken(String token) {
 		this.token = token;
 	}
 
@@ -127,8 +127,8 @@ public class UserDTO implements Serializable {
 	@Override
 	public String toString() {
 		return "UserDTO [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password
-				+ ", userPhoneList=" + userPhoneList + ", create=" + create + ", modified=" + modified + ", last_login="
-				+ last_login + ", token=" + token + ", isactive=" + isactive + "]";
+				+ ", phones=" + phones + ", create=" + create + ", modified=" + modified + ", last_login="
+				+ lastLogin + ", token=" + token + ", isactive=" + isactive + "]";
 	}
 
 

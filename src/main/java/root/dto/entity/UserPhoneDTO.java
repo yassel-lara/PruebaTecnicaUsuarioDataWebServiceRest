@@ -6,7 +6,10 @@ import java.util.UUID;
 public class UserPhoneDTO {
 
     private UUID id;
-    private String phone;
+    private String number;
+    private String citycode;
+    private String contrycode;
+    
     private UserDTO user;
     
     
@@ -17,12 +20,28 @@ public class UserPhoneDTO {
         this.id = id;
     }
 
-	public String getPhone() {
-		return phone;
+	public UUID getId() {
+		return id;
 	}
 
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setId(UUID id) {
+		this.id = id;
+	}
+
+	public String getNumber() {
+		return number;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
+	}
+
+	public String getContrycode() {
+		return contrycode;
+	}
+
+	public void setContrycode(String contrycode) {
+		this.contrycode = contrycode;
 	}
 
 	public UserDTO getUser() {
@@ -35,10 +54,10 @@ public class UserPhoneDTO {
 
 	@Override
 	public String toString() {
-		return "UserPhone [id=" + id + ", phone=" + phone + ", user=" + user + "]";
+		return "UserPhoneDTO [id=" + id + ", number=" + number + ", citycode=" + citycode + ", contrycode=" + contrycode
+				+ ", user=" + user + "]";
 	}
-    
 
-	
+    
 
 }
